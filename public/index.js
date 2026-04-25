@@ -2,7 +2,12 @@
 window.onload = () => {
   getProducts();
 };
-console.error('salve galerinhaaaa');
+let cart = [];
+console.error('ue vida')
+function addCarrinho(prod){
+  cart.push(prod);
+  console.log(cart);
+}
 async function getProducts() {
   try {
     const response = await fetch('/produtos');
@@ -21,7 +26,7 @@ async function getProducts() {
                     <h3>${element.nome}</h3>
                     <p>Perfeito para lagartos e aves.</p>
                     <div class="price">R$ ${element.precounit}</div>
-                    <button>Adicionar ao carrinho</button>
+                    <button onclick="addCarrinho(${element.id})">Adicionar ao carrinho</button>
                 </div>
             </div>
         `
@@ -32,4 +37,29 @@ async function getProducts() {
     console.error('Erro ao buscar produtos:', error);
     
   }
+}
+
+async function fazerLogin(){
+   const email = document.getElementById('email').value;
+   const senha = document.getElementById('senha').value;
+
+   try {
+    const response = await fetch('/login',{
+        method: 'POST',
+        headers: {
+           'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({ email, senha })
+    })
+     const data = await response.json();
+     if(response.ok){
+        alert('rolou du');
+        window.location.href = '/';
+     }else{
+        alert(data.erro);
+     }
+   } catch (error) {
+    
+   }
+    
 }
