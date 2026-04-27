@@ -45,9 +45,6 @@ app.post('/login',async function(req,res){
         role: user.role
       }
     });
-app.get('/login', (req, res) => {
-  res.sendFile(path.join(__dirname, '../public/login.html'));
-});
 
 
     
@@ -55,6 +52,9 @@ app.get('/login', (req, res) => {
      console.error(error);
     res.status(500).json({ erro: 'Erro no login' });
   }
+});
+app.get('/login', (req, res) => {
+  res.sendFile(path.join(__dirname, '../public/login.html'));
 });
 
 const PORT = process.env.PORT || 3000;
