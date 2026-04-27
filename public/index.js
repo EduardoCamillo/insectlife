@@ -24,7 +24,7 @@ async function getProducts() {
                 <img src="">
                 <div class="card-body">
                     <h3>${element.nome}</h3>
-                    <p>Perfeito para lagartos e aves.</p>
+                    <p>${element.descricao}</p>
                     <div class="price">R$ ${element.precounit}</div>
                     <button onclick="addCarrinho(${element.id})">Adicionar ao carrinho</button>
                 </div>
