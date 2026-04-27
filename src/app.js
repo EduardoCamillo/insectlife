@@ -6,6 +6,10 @@ app.use(express.json());
 app.use(express.static(path.join(__dirname, '../public')));
 
 
+app.get('/',(req,res) =>{
+  res.json({mensagem: 'Ta on!'})
+})
+
 app.get('/api/test', (req, res) => {
   res.json({ mensagem: 'API funcionando 🚀' });
 });
